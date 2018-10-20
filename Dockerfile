@@ -24,6 +24,7 @@ RUN set -ex \
     iptraf-ng \
     iputils \
     ipvsadm \
+    jq \
     liboping \
     mtr \
     net-snmp-tools \
@@ -48,6 +49,10 @@ RUN mv /usr/sbin/tcpdump /usr/bin/tcpdump
 
 # Installing calicoctl
 RUN wget https://github.com/projectcalico/calicoctl/releases/download/v3.1.1/calicoctl && chmod +x calicoctl && mv calicoctl /usr/local/bin
+RUN wget https://github.com/rs/curlie/releases/download/v1.2.0/curlie_1.2.0_linux_amd64.tar.gz && \
+    tar zxf curlie_1.2.0_linux_amd64.tar.gz -C /usr/local/bin curlie && \
+    chmod +x /usr/local/bin/curlie && \
+    rm curlie_1.2.0_linux_amd64.tar.gz
 
 # Netgen
 ADD netgen.sh /usr/local/bin/netgen
