@@ -1,0 +1,13 @@
+sudo: required
+
+services:
+- docker
+
+script:
+- docker build -t wisecloud/netshot:latest .
+
+deploy:
+  provider: script
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wisecloud/netshot:latest
+  on:
+    all_branches: true
