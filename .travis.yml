@@ -4,10 +4,10 @@ services:
 - docker
 
 script:
-- docker build -t wisecloud/netshot:latest .
+- docker build -t wisecloud/netshoot:latest .
 
 deploy:
   provider: script
-  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wisecloud/netshot:latest
+  script: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD && docker push wisecloud/netshoot:latest
   on:
     all_branches: true
